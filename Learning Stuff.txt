@@ -1,0 +1,28 @@
+Python uses:
+    data science
+        Pandas, Numpy libraries
+    machine learning
+        Tensorflow, Scikit
+    web development
+        Python frameworks: Django, FastAPI, Flask used in back-end system
+        example: Instagram and Pinterest uses Python for backend
+    scripting
+        In DevOps: used for CI/CD scripts
+        managing infrastructure across development pipelines
+        build back-end services and internal APIs
+    automation
+        write scripts for repetitive task: extract data from spreadsheet, sending email, deal with local files
+    embedded systems
+        Rpi and MicroPython-compatible boards
+    IoT
+        projects such as smart home devices, weather monitoring stations
+    software testing
+        pytest: test suites
+        server monitoring, log management, system-level task
+    scrape public data: libraries suchh as Selenium, BeautifulSoup
+    
+Downloading of python:
+    https://www.python.org/
+    downloading a .pkg file (for MAC)
+    downloading a .exe file (for window) -> Add python.exe to Path
+    verify the installation by opening up your terminal and running python --version
