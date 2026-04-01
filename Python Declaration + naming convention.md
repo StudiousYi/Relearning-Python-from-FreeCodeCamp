@@ -458,3 +458,122 @@ Float 0.0
 Empty strings ""
 
 Other values like non-zero numbers, and non-empty strings are **truthy**
+
+# Function
+**reusable** pieces of code that **run** when you **call** them
+
+## input()
+prompt the user for input
+```
+name = input('What is your name?') # User types "Kolade" and presses Enter  
+print('Hello', name) # Output: Hello Kolade
+```
+
+## Writing custom functions
+**def** keyword
+```
+def calculate_sum(a, b):
+    print(a + b)
+```
+To **run** the function, you need to **call** it with its name()
+```
+calculate_sum() # result of a+b
+```
+*a* and *b* in this function are **parameters**: placeholder variables (so we know what inputs to pass to this function)
+
+To use the parameters, you have to pass in **arguments**
+```
+calculate_sum(3, 1)
+```
+3 and 1 here are the arguments: values passed to the function
+
+**return** keyword: Functions also use a special return keyword to **exit** the function and **return a value**. If you don't explicitly use return, Python will return None by default.
+
+# Scope
+scope determines the point at which you can **access a variable**
+
+It's what controls the **lifetime** of a variable and how it is **resolved** in different parts of the code
+
+Python follows the LEGB
+```
+Local scope (L): Variables defined in functions or classes.
+
+Enclosing scope (E): Variables defined in enclosing or nested functions.
+
+Global scope (G): Variables defined at the top level of the module or file.
+
+Built-in scope (B): Reserved names in Python for predefined functions, modules, keywords, and objects.
+```
+### Local: calling a variable out side of a function will lead to NameError
+```
+def my_func():
+    my_var = 10
+    print(my_var)
+
+my_func() # 10
+
+print(my_var) # NameError: name 'my_var' is not defined
+```
+### Enclosing: a function that's nested inside another function can access the variables of the function it's nested within
+
+inner_func() can freely access the msg variable defined in the outer_func(), but the reverse is not true
+```
+def outer_func():
+    msg = 'Hello there!'
+
+    def inner_func():
+        print(msg)
+
+    inner_func()
+
+outer_func() # Hello there!
+```
+make res a **non-local variable** with the **nonlocal** keyword
+```
+def outer_func():
+    msg = 'Hello there!'
+    res = ""  # Declare res in the enclosing scope
+
+    def inner_func():
+        nonlocal res  # Allow modification of an enclosing variable
+        res = 'How are you?'
+        print(msg)  # Accessing msg from outer_func()
+
+    inner_func()
+    print(res)  # Now res is accessible and modified
+
+outer_func()
+
+# Output:
+# Hello there!
+# How are you?
+```
+### Global: refers to variables that are declared **outside** any functions or classes that can be accessed from anywhere in the program
+if you want to make a locally scoped variable defined **inside a function globally** accessible, you can use the global keyword:
+```
+my_var_1 = 7
+
+def show_vars():
+    global my_var_2
+    my_var_2 = 10
+    print(my_var_1)
+    print(my_var_2)
+
+show_vars() # 7 10
+
+# my_var_2 is now a global variable and can be accessed anywhere in the program
+print(my_var_2) # 10
+```
+You can also use the global keyword to modify a global variable:
+```
+my_var = 10  # A global variable
+
+def change_var():
+    global my_var  # Allows modification of a global variable
+    my_var = 20
+
+change_var()
+
+print(my_var)  # my_var is now modified globally to 20
+```
+### Built-in scope: refers to all of Python's built-in functions, modules, and keywords, and are available anywhere in your program
