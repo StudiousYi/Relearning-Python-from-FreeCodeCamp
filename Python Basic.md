@@ -1,3 +1,5 @@
+# Chapter 1
+
 # variable name
 variables can only start with _ or a letter (no number)
 
